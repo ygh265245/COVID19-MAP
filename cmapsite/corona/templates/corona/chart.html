@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style tyle="text/css">
+    a {text-decoration:none}
+    html,
+     body {
+         height: 100%;
+          }
+
+    body {
+         display: flex;
+          flex-direction: column;
+          fontsize: 14px;
+       }
+
+    section {
+          flex: 1;
+    }
+    table {
+        width:90%;
+        border-collapse: collapse;
+        margin: auto;
+        margin-bottom: 15px;
+    }
+    table td,
+        table th {
+            text-align: center;
+            padding: 15px;
+            border: 1px solid lightgray;
+        }
+        table th{
+            background-color: rgb(220, 236, 253);
+        }
+
+  </style>
+
+    
+    <title>코로나맵</title>
+</head>    
+
+
+<body>
+    <header> 
+    <div align="center" style="height:100px; margin-top: 100px;">
+    <h1><strong>전북 코로나 상황</strong></h1>
+    </div>
+<br><br>
+
+<!-- table 위의 버튼 -->
+
+<a> <b> &nbsp&nbsp 확진자 이동경로</b>&nbsp&nbsp&nbsp&nbsp</a>
+
+<a href="{% url 'hospital_chart' %}"> 보건소 &nbsp&nbsp&nbsp&nbsp </a>
+  <a href="{% url 'index' %}"> 지도 보기</a>
+</div>
+
+</header>
+<p></p>
+
+<!-- 섹션(표 부분(중간)) -->
+<section>
+
+<table border="1">
+<thread >
+    <tr>
+        <td bgcolor="efefef"><b>시도</b></td>
+        <td bgcolor="efefef"><b>시군구</b></td>
+        <td bgcolor="efefef"><b>상호명</b></td>
+        <td bgcolor="efefef"><b>주소</b></td>  
+        <td bgcolor="efefef"><b>노출일시</b></td>
+        <td bgcolor="efefef"><b>소독여부</b></td>
+    </tr>
+</thread>
+<tbody>
+    {% for data in data %}
+        <tr>
+            <td width="6%" >{{data.0}}</td>
+            <td width="8%" >{{data.1}}</td>
+            <td width="6%">{{data.2}}</td>
+            <td width="35%" style="word-break:break-all;">{{data.3}}</td>
+            <td width="35%" style="word-break:break-all;">{{data.4}}</td>
+            <td  >{{data.5}}</td>
+        </tr>
+    {% endfor %}
+</tbody>
+</table>
+
+</section>
+
+
+<!-- 푸터 (끝부분 (사이트 정보 등)) -->
+
+<footer style="background-color: rgb(111, 114, 121);">
+    <div class="tel-num", style="color:black;">
+        <p></p>
+        &nbsp* 참고:전북도청 - 전라북도청 <br>
+        &nbsp (54968) 전라북도 전주시 완산구 효자로 225 &nbsp&nbsp  ☎대표전화:<strong>063-280-2114</strong>
+    </div>
+
+    <div align="right">
+        COVIED-19
+    </div>
+</footer>
+
+
+    
+</body>
+</html>
